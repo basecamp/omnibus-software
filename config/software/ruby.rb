@@ -130,7 +130,8 @@ build do
     # be fixed.
   end
 
-  configure_command = ["--with-out-ext=dbm,readline",
+  configure_command = [ "./configure",
+                       "--with-out-ext=dbm,readline",
                        "--enable-shared",
                        "--disable-install-doc",
                        "--without-gmp",
