@@ -140,7 +140,6 @@ build do
                        "--without-tk",
                        "--disable-dtrace",
                        "--disable-jit-support"]
-  configure_command << "--with-bundled-md5" if fips_mode?
 
   case ohai['platform']
   when "aix"
