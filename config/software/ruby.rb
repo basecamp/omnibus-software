@@ -132,6 +132,7 @@ build do
 
   configure_command = [ "./configure",
                        "--with-out-ext=dbm,readline",
+                       "--prefix=#{install_dir}/embedded",
                        "--enable-shared",
                        "--disable-install-doc",
                        "--without-gmp",
