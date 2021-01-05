@@ -35,9 +35,10 @@ dependency "bundler"
 build do
   env = with_standard_compiler_flags(with_embedded_path)
 
-  bundle "install --without development", env: env
+  # The --without groups here MUST match groups in https://github.com/chef/ohai/blob/master/Gemfile
+  bundle "install --without development docs debug", env: env
 
   gem "build ohai.gemspec", env: env
   gem "install ohai*.gem" \
-      " --no-ri --no-rdoc", env: env
+      "  --no-document", env: env
 end
