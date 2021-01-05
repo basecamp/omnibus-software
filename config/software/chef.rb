@@ -66,6 +66,13 @@ dependency "appbundler"
 build do
   env = with_standard_compiler_flags(with_embedded_path)
 
+  bundle "install --without #{excluded_groups.join(" ")}", env: env
+
+  # ensure we put the gems in the right place to get picked up by the publish scripts
+  delete "pkg"
+  mkdir "pkg"
+  copy "chef*.gem", "pkg"
+  
   if windows?
     # Normally we would symlink the required unix tools.
     # However with the introduction of git-cache to speed up omnibus builds,
@@ -84,13 +91,12 @@ build do
       copy "#{install_dir}/embedded/mingw/bin/#{to}", "#{install_dir}/bin/#{target}"
     end
   end
+  
+  # use the rake install task to build/install chef-config/chef-utils
+  bundle "exec rake install", env: env
 
   # install the whole bundle first
   bundle "install --without server docgen", env: env
-
-  # Install components that live inside Chef's git repo. For now this is just
-  # 'chef-config'
-  bundle "exec rake install_components", env: env
 
   gemspec_name = windows? ? 'chef-windows.gemspec' : 'chef.gemspec'
 
