@@ -43,6 +43,7 @@ version("2.2.1")      { source md5: "b49fc67a834e4f77249eb73eecffb1c9" }
 version("2.2.2")      { source md5: "326e99ddc75381c7b50c85f7089f3260" }
 version("2.2.3")      { source md5: "150a5efc5f5d8a8011f30aa2594a7654" }
 version("2.5.1")      { source md5: "23867bc8c16c55e43b14dfe0614bcfa8" }
+version("2.7.2")      { source md5: "2d4a28dcfa38352a627a597f6057c465" }
 
 source url: "http://cache.ruby-lang.org/pub/ruby/#{version.match(/^(\d+\.\d+)/)[0]}/ruby-#{version}.tar.gz"
 
