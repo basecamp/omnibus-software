@@ -66,8 +66,6 @@ dependency "appbundler"
 build do
   env = with_standard_compiler_flags(with_embedded_path)
 
-  bundle "install --without #{excluded_groups.join(" ")}", env: env
-
   # ensure we put the gems in the right place to get picked up by the publish scripts
   delete "pkg"
   mkdir "pkg"
