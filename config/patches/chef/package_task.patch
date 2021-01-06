@@ -1,0 +1,10 @@
+--- chef/chef-config/lib/chef-config/package_task.rb	2021-01-05 14:43:55.000000000 -0800
++++ chef/chef-config/lib/chef-config/package_task.new	2021-01-05 18:05:40.000000000 -0800
+@@ -201,7 +201,7 @@
+       task :install => [:package] do
+         with_clean_env do
+           full_module_path = File.join(full_package_dir, module_path)
+-          sh %{gem install #{full_module_path}-#{version}.gem --no-rdoc --no-ri}
++          sh %{gem install #{full_module_path}-#{version}.gem}
+         end
+       end
