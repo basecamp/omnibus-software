@@ -39,6 +39,8 @@ dependency "appbundler"
 build do
   env = with_standard_compiler_flags(with_embedded_path)
 
+  patch source: "package_task.patch", plevel: 1
+  
   if windows?
     # Normally we would symlink the required unix tools.
     # However with the introduction of git-cache to speed up omnibus builds,
