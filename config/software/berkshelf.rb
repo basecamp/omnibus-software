@@ -38,7 +38,10 @@ dependency "dep-selector-libgecode"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)
-
+  
+  bundle "config" \
+         " build.ffi --with-cflags='-Wno-error=implicit-function-declaration'"
+  
   bundle "install" \
          " --jobs #{workers}" \
          " --without guard", env: env
