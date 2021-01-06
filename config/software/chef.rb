@@ -63,10 +63,6 @@ build do
   # install the whole bundle first
   bundle "install --without server docgen", env: env
 
-  # Install components that live inside Chef's git repo. For now this is just
-  # 'chef-config'
-  bundle "exec rake install_components", env: env
-
   gemspec_name = windows? ? 'chef-windows.gemspec' : 'chef.gemspec'
 
   # This step will build native components as needed - the event log dll is
@@ -75,7 +71,6 @@ build do
 
   # Don't use -n #{install_dir}/bin. Appbundler will take care of them later
   gem "install chef*.gem " \
-      " --no-ri --no-rdoc" \
       " --verbose", env: env
 
   # Always deploy the powershell modules in the correct place.
